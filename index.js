@@ -4,7 +4,9 @@ const app = express().use(express.json());
 const apiConfig = new apiConfig(3000, "http://localhost:3000/", 3 , false);
 // Made by Manuel Cervantes 
 const route = {
-  numeros: new Array 
+  stage : 0,
+  numeros: new Array, 
+  stage: new Array
 }
 
 /**
@@ -23,12 +25,17 @@ app.post('/', (req, res) => {
  * @returns The json object recived
  */
 async function sendAndReciveJSON(url,json) {
-    fetch(url,{ headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'},
-    method:"POST",body:JSON.stringify(json)})
-  .then(jsonParsed = response.json(),
-  console.log("Error"))
+  fetch(url,
+    { 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+      method:"POST",body:JSON.stringify(json)})
+  .then(
+    jsonParsed = response.json(),
+  console.log("Error")
+)
   .then(jsonParsed => {
     return jsonParsed;
   });
@@ -40,14 +47,18 @@ async function sendAndReciveJSON(url,json) {
    * @param {*} json Json object
    * @param {*} res Server response variable
    */
-  function send(url , json , res) {
+function send(url , json , res) {
   if (json.numeros.length != apiConfig.maxNodes ){
     json = sendAndReciveJSON(url,json);
   } 
   res.send(JSON.stringify(json));
 }
 
-(async () => {
+app.listen(apiConfig.port, () => {
+  console.log(`Listening in port ${port}`)
+})
+
+(() => {
   route.numeros.push(apiConfig.number);
   if (apiConfig.startNode){
     let json = sendAndReciveJSON(apiConfig.url, route);
@@ -56,6 +67,4 @@ async function sendAndReciveJSON(url,json) {
 })();
 
 
-app.listen(apiConfig.port, () => {
-  console.log(`Listening in port ${port}`)
-})
+
