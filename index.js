@@ -2,7 +2,7 @@ const express = require('express');
 const { apiConfig } = require('./config');
 const app = express().use(express.json());
 const apiConfig = new apiConfig(3000, "http://localhost:3000/", 3 , false);
-// Made by Manuel Cervantes 
+// Made by the incredible Manuel Cervantes 
 const route = {
   stage : 0,
   numeros: new Array, 
@@ -34,7 +34,7 @@ async function sendAndReciveJSON(url,json) {
       method:"POST",body:JSON.stringify(json)})
   .then(
     jsonParsed = response.json(),
-  console.log("Error")
+    console.log("Error")
 )
   .then(jsonParsed => {
     return jsonParsed;
@@ -55,7 +55,7 @@ function send(url , json , res) {
 }
 
 app.listen(apiConfig.port, () => {
-  console.log(`Listening in port ${port}`)
+  console.log(`Listening in port ${apiConfig.port}`)
 })
 
 (() => {
@@ -65,6 +65,3 @@ app.listen(apiConfig.port, () => {
     console.log("JSON: " + json.numeros);
   }
 })();
-
-
-

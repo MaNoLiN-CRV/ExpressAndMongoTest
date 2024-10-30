@@ -1,4 +1,4 @@
-export class apiConfig {
+export class ApiConfig {
   port = 3001;
   number = 1;
   url = "http://localhost:3000/";
