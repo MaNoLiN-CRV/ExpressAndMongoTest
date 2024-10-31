@@ -1,0 +1,3 @@
+Los archivos index son exactamente los mismos, lo único que cambia es la configuración (apiConfig) de los mismos.
+Para probar el programa primero se ejecutan las copias (que están ya configuradas) , y por último el index.js.
+La base de datos ya está configurada en un cluster, NO TOCAR URL.

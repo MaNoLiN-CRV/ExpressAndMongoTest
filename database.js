@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from "mongodb";
 export default class Database {
     // Manuel used MongoClient instead of Mongoose, please Raul, don't hit me
     database = null;
@@ -49,12 +49,18 @@ export default class Database {
     async readObjectByValue({value}){
         let returnedObject;
         try {
-            returnedObject = await this.collection.findOne(value); 
+            await this.client.connect();
+            returnedObject = await this.collection.find(value); 
         }
         catch (e){
             returnedObject = null;
         }
+        finally {
+            this.client.close();
+        }
         return returnedObject;
     }
+
+
 
 };

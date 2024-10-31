@@ -2,7 +2,7 @@ import express, { json as _json } from 'express';
 import ApiConfig from './config.js';
 import Database from './Database.js';
 const app = express().use(_json());
-const apiConfig = new ApiConfig(2999, "http://localhost:3000/", 3 , true);
+const apiConfig = new ApiConfig(3001, "", 3 , false);
 const database = new Database("mongodb+srv://manoliin27:EW8s1J71GNRaosSg@cluster0.hgo7x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 // Made by the incredible Manuel Cervantes 
 const route = {
