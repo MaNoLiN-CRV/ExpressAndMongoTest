@@ -10,10 +10,10 @@ const route = {
   numbers: new Array, 
   stamp: new Array
 }
-
+// BUSCAR LOS OBJETOS QUE CONTENGAN UN NÚMERO EN EL ARRAY
 app.get("/find/:number",async (req,res) => {
   let numberFind = parseInt(req.params.number);
-  const result = await database.readObjectByValue({numbers: numberFind});
+  const result = await database.readObjectByValue({ numbers: numberFind });
   res.send(result);
 });
 
