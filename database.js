@@ -36,7 +36,7 @@ export default class Database {
             dev = false;
         }
         finally {
-            this.client.close();
+            await this.client.close();
         }
         return dev;
     }
@@ -50,13 +50,13 @@ export default class Database {
         let returnedObject;
         try {
             await this.client.connect();
-            returnedObject = await this.collection.find(value); 
+            returnedObject = await this.collection.find(value).toArray(); 
         }
         catch (e){
             returnedObject = null;
         }
         finally {
-            this.client.close();
+            await this.client.close();
         }
         return returnedObject;
     }
