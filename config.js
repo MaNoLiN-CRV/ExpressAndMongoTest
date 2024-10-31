@@ -20,7 +20,12 @@ export default class ApiConfig {
     this.number = this.randomNumber();
   }
 
-  randomNumber(params) {
-    return (Math.floor(Math.random()) * 100) + 1
+  /**
+   * 
+   * @returns random number 1-100
+   */
+  randomNumber() {
+    return Math.floor(Math.random() * 100) + 1;
   }
+  
 }
